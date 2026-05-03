@@ -613,6 +613,40 @@ body{
   margin-left:auto;
 }
 
+/* ============ EASTER EGG MODAL ============ */
+#egg-overlay{
+  position:fixed;inset:0;z-index:99998;
+  background:rgba(2,5,8,0.92);
+  display:flex;align-items:center;justify-content:center;
+  backdrop-filter:blur(8px);
+  animation:fadeIn 0.4s ease;
+}
+#egg-window{
+  width:min(720px,92vw);
+  background:var(--surface);
+  border:1px solid var(--border-hi);
+  border-radius:10px;
+  box-shadow:0 0 80px rgba(0,212,255,0.15), var(--win-shadow);
+  overflow:hidden;
+  animation:slideUp 0.4s cubic-bezier(0.16,1,0.3,1);
+}
+.egg-titlebar{
+  display:flex;align-items:center;gap:10px;
+  padding:12px 16px;
+  background:var(--surface-2);
+  border-bottom:1px solid var(--border);
+}
+#egg-body{
+  position:relative;
+  padding-top:56.25%; /* 16:9 */
+}
+#egg-iframe{
+  position:absolute;inset:0;
+  width:100%;height:100%;
+}
+#egg-close{cursor:pointer;}
+#egg-close:hover{filter:brightness(1.4);}
+
 /* ============ FOOTER ============ */
 .footer{
   text-align:center;padding:18px;
@@ -943,7 +977,7 @@ body{
               </div>
 
             </div>
-            <span class="fede-badge">★ EST. 1996 ★</span>
+            <span class="fede-badge" id="easter-egg-btn" style="cursor:pointer;" title="">★ EST. 1996 ★</span>
           </div>
         </div>
       </div>
@@ -1212,6 +1246,28 @@ function esc(t) {
 
 document.addEventListener('DOMContentLoaded', init);
 
+/* ═══ EASTER EGG ═══ */
+document.addEventListener('DOMContentLoaded', function(){
+  const btn = document.getElementById('easter-egg-btn');
+  const overlay = document.getElementById('egg-overlay');
+  const closeBtn = document.getElementById('egg-close');
+  const iframe = document.getElementById('egg-iframe');
+
+  function open() {
+    overlay.style.display = 'flex';
+  }
+  function close() {
+    overlay.style.display = 'none';
+    iframe.src = 'https://www.youtube.com/embed/wNzPUXYY2_Y?autoplay=1&rel=0&modestbranding=1';
+  }
+
+  btn.addEventListener('click', open);
+  closeBtn.addEventListener('click', close);
+  overlay.addEventListener('click', e => {
+    if (e.target === overlay) close();
+  });
+});
+
 /* ═══ SPLASH SCREEN ═══ */
 (function(){
   const splash = document.getElementById('splash');
@@ -1262,5 +1318,28 @@ document.addEventListener('DOMContentLoaded', init);
   setTimeout(burst, 400);
 })();
 </script>
+<!-- ═══ EASTER EGG MODAL ═══ -->
+<div id="egg-overlay" style="display:none">
+  <div id="egg-window">
+    <div class="egg-titlebar">
+      <div class="dots">
+        <span class="dot dot-r" id="egg-close"></span>
+        <span class="dot dot-y"></span>
+        <span class="dot dot-g"></span>
+      </div>
+      <span class="win-title">message.exe</span>
+      <span class="win-badge">❤️</span>
+    </div>
+    <div id="egg-body">
+      <iframe id="egg-iframe"
+        src="https://www.youtube.com/embed/wNzPUXYY2_Y?autoplay=1&rel=0&modestbranding=1"
+        frameborder="0"
+        allow="autoplay; fullscreen"
+        allowfullscreen>
+      </iframe>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
