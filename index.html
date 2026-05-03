@@ -626,7 +626,8 @@ body{
 /* ============ RESPONSIVE — TABLET ============ */
 @media(max-width:980px){
   .bottom-row{grid-template-columns:1fr}
-  .window-tracks{position:static}
+  .window-tracks{position:static;max-height:none;overflow:visible;display:block}
+  .track-list{max-height:400px;overflow-y:auto}
   .fede-name{font-size:56px}
   .desktop-content{padding:16px;gap:16px}
 }
@@ -635,63 +636,90 @@ body{
 @media(max-width:600px){
 
   /* Taskbar */
-  .taskbar{padding:0 16px;height:42px}
-  .tb-logo{font-size:10px;letter-spacing:1px}
-  .tb-clock{font-size:13px;letter-spacing:1px}
+  .taskbar{padding:0 16px;height:42px;position:relative}
+  .tb-logo{font-size:9px;letter-spacing:1px}
+  .tb-clock{font-size:12px;letter-spacing:1px}
   .tb-tag{display:none}
 
   /* Splash */
-  .splash-logo{font-size:22px;letter-spacing:4px;text-align:center;padding:0 24px}
-  .splash-sub{font-size:10px;letter-spacing:3px;text-align:center;padding:0 24px}
+  .splash-logo{font-size:20px;letter-spacing:3px;text-align:center;padding:0 20px}
+  .splash-sub{font-size:10px;letter-spacing:2px;text-align:center;padding:0 20px}
 
   /* Content grid */
-  .desktop-content{padding:12px;gap:12px}
-  .bottom-row{grid-template-columns:1fr;gap:12px}
-  .welcome-inner{flex-direction:column}
+  .desktop-content{padding:10px;gap:10px}
+  .bottom-row{grid-template-columns:1fr;gap:10px}
+
+  /* welcome-inner: stack vertically, center everything */
+  .welcome-inner{
+    flex-direction:column;
+    align-items:center;
+    gap:0;
+  }
 
   /* Windows */
-  .window{border-radius:12px}
+  .window{border-radius:10px}
   .titlebar{padding:10px 14px}
   .win-title{font-size:10px}
 
-  /* Hero section */
-  .fede-body{padding:20px 18px 16px}
+  /* Hero section — tighter on mobile */
+  .fede-body{padding:24px 20px 12px;text-align:center}
   .fede-sub{font-size:10px;letter-spacing:3px}
-  .fede-name{font-size:52px;letter-spacing:-1px}
-  .fede-age{font-size:12px;letter-spacing:2px}
-  .fede-desc{font-size:13px;line-height:1.7}
-  .fede-divider{margin:14px 0}
+  .fede-name{font-size:48px;letter-spacing:-1px}
+  .fede-age{font-size:12px;letter-spacing:2px;margin-bottom:14px}
+  .fede-desc{font-size:12px;line-height:1.8}
+  .fede-divider{margin:12px auto}
 
-  /* Photo section */
-  .photo-section{flex-direction:row;align-items:center;gap:16px;padding:16px 18px}
-  .photo-label{font-size:10px;text-align:left;writing-mode:vertical-rl;transform:rotate(180deg);white-space:nowrap}
-  .polaroid{max-width:130px;padding:8px 8px 28px}
+  /* Photo section — horizontal strip below hero text */
+  .photo-section{
+    flex-direction:row;
+    align-items:center;
+    justify-content:center;
+    gap:14px;
+    padding:12px 20px 20px;
+    width:100%;
+  }
+  .polaroid{
+    max-width:100px;
+    padding:6px 6px 24px;
+    transform:rotate(-1deg);
+    flex-shrink:0;
+  }
+  .photo-section .fede-badge{
+    font-size:9px;
+    padding:4px 8px;
+    letter-spacing:1px;
+  }
 
-  /* Spotify */
-  .spotify-body{padding:14px}
-  .spotify-hint{font-size:11px;padding:10px 12px;margin-bottom:12px}
-  .spotify-body iframe{height:320px}
+  /* Spotify — full height embed */
+  .spotify-body{padding:12px}
+  .spotify-hint{font-size:11px;padding:10px 12px;margin-bottom:10px;line-height:1.5}
+  .spotify-body iframe{height:300px}
 
-  /* Dedications panel */
-  .ded-display{padding:14px}
-  .ded-placeholder{padding:28px 16px}
+  /* Dedications panel — no sticky on mobile, natural flow */
+  .window-tracks{position:static;max-height:none;overflow:visible;display:block}
+  .ded-display{padding:16px;min-height:200px;flex-shrink:unset}
+  .ded-placeholder{padding:24px 16px;height:160px}
   .ded-placeholder span{font-size:12px}
+  .ded-icon{font-size:28px}
 
-  /* Track list */
-  .track-item{padding:10px 14px}
-  .t-num{font-size:12px;min-width:24px}
+  /* Track list — limited height so it's scrollable on mobile */
+  .track-list{max-height:320px;overflow-y:auto;flex:unset}
+  .track-item{padding:11px 14px}
+  .t-num{font-size:12px;min-width:22px}
   .t-name{font-size:13px}
   .t-from{font-size:10px}
-  .t-arrow{font-size:16px}
+  .t-arrow{font-size:15px}
 
   /* Dedication card */
-  .ded-card{padding:18px 16px}
-  .ded-song{font-size:14px}
-  .ded-from{font-size:10px}
-  .ded-msg{font-size:13px;line-height:1.7}
+  .ded-card{padding:16px}
+  .ded-track-row{gap:10px}
+  .ded-title{font-size:14px}
+  .ded-artist{font-size:11px}
+  .msg-text{font-size:13px;line-height:1.7}
+  .q-open{font-size:40px}
 
   /* Footer */
-  .footer{padding:16px;font-size:10px}
+  .footer{padding:16px;font-size:10px;text-align:center;line-height:1.8}
 }
 
 /* ============ SPLASH SCREEN ============ */
