@@ -170,14 +170,7 @@ body{
 }
 
 /* Dedications sticky in bottom row */
-.window-tracks{
-  position:sticky;
-  top:58px;
-  max-height:calc(100vh - 74px);
-  overflow-y:auto;
-  scrollbar-width:thin;
-  scrollbar-color:var(--border) transparent;
-}
+
 .window{
   background:var(--surface);
   border:1px solid var(--border);
@@ -390,9 +383,9 @@ body{
   position:sticky;
   top:58px;
   max-height:calc(100vh - 74px);
-  overflow-y:auto;
-  scrollbar-width:thin;
-  scrollbar-color:var(--border) transparent;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
 }
 
 /* Rainbow bar */
@@ -407,6 +400,7 @@ body{
 /* ============ DEDICATION DISPLAY ============ */
 .ded-display{
   min-height:240px;
+  flex-shrink:0;
   padding:22px;
   background:linear-gradient(135deg,rgba(0,80,200,0.06),rgba(0,180,255,0.04));
   border-bottom:1px solid var(--border);
@@ -537,7 +531,8 @@ body{
 
 /* ============ TRACK LIST ============ */
 .track-list{
-  max-height:440px;overflow-y:auto;
+  flex:1;
+  overflow-y:auto;
   scrollbar-width:thin;scrollbar-color:var(--border) transparent;
 }
 .track-list::-webkit-scrollbar{width:4px}
