@@ -157,8 +157,8 @@ body{
 .welcome-inner{
   display:flex;
   align-items:center;
-  justify-content:flex-start;
-  gap:12px;
+  justify-content:center;
+  gap:40px;
 }
 
 /* Bottom row: spotify + dedications side by side */
@@ -279,27 +279,26 @@ body{
 
 /* ============ BABY PHOTO ============ */
 .photo-section{
-  padding:0 16px 20px;
+  padding:0 20px 24px;
   display:flex;
   flex-direction:column;
   align-items:center;
-  gap:10px;
+  gap:12px;
+  overflow:hidden;
 }
 .photo-label{
-  font-family:var(--font-display);font-size:15px;
+  font-family:var(--font-display);font-size:11px;
   letter-spacing:3px;color:var(--text-muted);
   text-transform:uppercase;
-  display:flex;align-items:center;gap:8px;
-}
-.photo-label::before,.photo-label::after{
-  content:'';flex:1;height:1px;
-  background:linear-gradient(90deg,transparent,var(--border-hi));
-}
-.photo-label::after{
-  background:linear-gradient(270deg,transparent,var(--border-hi));
+  text-align:center;
+  white-space:nowrap;
 }
 
-/* Polaroid frame */
+.photo-section .fede-badge{
+  font-size:10px;
+  padding:5px 10px;
+  letter-spacing:2px;
+}
 .polaroid{
   position:relative;
   background:linear-gradient(145deg,#0d1e38,#0a1628);
@@ -308,10 +307,11 @@ body{
   padding:10px 10px 34px;
   box-shadow:0 8px 32px rgba(0,0,0,0.6), 0 0 0 1px rgba(0,212,255,0.08),
              inset 0 1px 0 rgba(255,255,255,0.04);
-  transform:rotate(-1.5deg);
+  transform:rotate(-1deg);
   transition:transform 0.3s ease,box-shadow 0.3s ease;
-  max-width:200px;
+  max-width:160px;
   width:100%;
+  margin:8px;
 }
 .polaroid:hover{
   transform:rotate(0deg) scale(1.02);
@@ -909,12 +909,10 @@ body{
               <strong>Hit play</strong>, then open <strong>dedications.log</strong> to see what they wrote. 🎧
             </div>
             <div class="fede-btn-row">
-              <span class="fede-badge">★ EST. 1996 ★</span>
             </div>
           </div>
           <!-- ══ BABY PHOTO SECTION ══ -->
           <div class="photo-section">
-            <div class="photo-label">dedicated to this little icon</div>
             <div class="polaroid">
               <div class="tape"></div>
               <div class="polaroid-img-wrap">
@@ -922,6 +920,7 @@ body{
               </div>
 
             </div>
+            <span class="fede-badge">★ EST. 1996 ★</span>
           </div>
         </div>
       </div>
@@ -1198,4 +1197,5 @@ document.addEventListener('DOMContentLoaded', init);
   setTimeout(burst, 400);
 })();
 </script>
-</body
+</body>
+</html>
