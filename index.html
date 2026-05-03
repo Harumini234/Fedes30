@@ -143,7 +143,7 @@ body{
 .desktop-content{
   flex:1;
   display:grid;
-  grid-template-columns:480px 1fr;
+  grid-template-columns:580px 1fr;
   gap:22px;
   padding:26px 28px;
   align-items:start;
@@ -359,7 +359,14 @@ body{
 .spotify-body iframe{border-radius:8px;display:block}
 
 /* ============ RIGHT COLUMN ============ */
-.window-tracks{position:sticky;top:68px}
+.window-tracks{
+  position:sticky;
+  top:58px;
+  max-height:calc(100vh - 74px);
+  overflow-y:auto;
+  scrollbar-width:thin;
+  scrollbar-color:var(--border) transparent;
+}
 
 /* Rainbow bar */
 .ded-bar{
